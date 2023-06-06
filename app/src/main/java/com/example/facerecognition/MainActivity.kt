@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
     companion object {
         private const val CAMERA_PERMISSION_CODE = 100
         private const val REQUEST_IMAGE_CAPTURE = 200
-        private const val BASE_URL = "http://localhost:5000/"
+        private const val BASE_URL = "http://localhost:8000/"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         imageView = findViewById(R.id.imageView)
         predictButton = findViewById(R.id.predictButton)
 
-        // Buat Retrofit instance
+//         Buat Retrofit instance
         retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity() {
         imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
         val byteArray = stream.toByteArray()
 
-        val requestFile = byteArray.toRequestBody("image/jpeg".toMediaTypeOrNull())
+        val requestFile = byteArray.toRequestBody("image/jpg".toMediaTypeOrNull())
         val body = MultipartBody.Part.createFormData("image", "image.jpg", requestFile)
 
         // Permintaan API

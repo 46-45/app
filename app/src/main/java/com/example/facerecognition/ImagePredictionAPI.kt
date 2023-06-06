@@ -9,7 +9,7 @@ import retrofit2.http.Part
 
 interface ImagePredictionAPI {
     @Multipart
-    @POST("predict")
+    @POST("absen")
     fun uploadImage(
         @Part image: MultipartBody.Part
     ): Call<PredictionResponse>
